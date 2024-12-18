@@ -83,6 +83,7 @@ class TLA(Algorithm):
             # 训练循环
             self.training_epoch(src_loader, trg_loader, avg_meter, epoch)
 
+
             # 保存最佳模型
             if (epoch + 1) % 10 == 0 and avg_meter['Src_cls_loss'].avg < best_src_risk:
                 best_src_risk = avg_meter['Src_cls_loss'].avg

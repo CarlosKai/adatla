@@ -54,6 +54,7 @@ def _logger(logger_name, level=logging.DEBUG):
     log_format = logging.Formatter(format_string)
     # Creating and adding the console handler
     console_handler = logging.StreamHandler(sys.stdout)
+    # console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(log_format)
     logger.addHandler(console_handler)
     # Creating and adding the file handler
@@ -75,6 +76,7 @@ def starting_logs(data_type, da_method, exp_log_dir, src_id, tgt_id, run_id):
     logger.debug(f'Source: {src_id} ---> Target: {tgt_id}')
     logger.debug(f'Run ID: {run_id}')
     logger.debug("=" * 45)
+
     return logger, log_dir
 
 

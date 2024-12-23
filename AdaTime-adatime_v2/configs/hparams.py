@@ -20,11 +20,7 @@ class HAR():
         self.alg_hparams = {
             "TLA": {
                 "learning_rate": 0.005,
-                "weight_decay": 0.0001,
-                "step_size": 10,
-                "lr_decay": 0.1,
-                "domain_loss_wt": 7.3937939938562,
-                "src_cls_loss_wt": 4.185814373345016
+                "src_cls_loss_wt": 0.5,
             },
             'NO_ADAPT': {'learning_rate': 1e-3, 'src_cls_loss_wt': 1},
             'TARGET_ONLY': {'learning_rate': 1e-3, 'trg_cls_loss_wt': 1},
@@ -114,12 +110,18 @@ class EEG():
     def __init__(self):
         super(EEG, self).__init__()
         self.train_params = {
-            'num_epochs': 40,
+            'num_epochs': 400,
             'batch_size': 128,
             'weight_decay': 1e-4,
+            'step_size': 50,
+            'lr_decay': 0.5
 
         }
         self.alg_hparams = {
+            "TLA": {
+                "learning_rate": 0.005,
+                "src_cls_loss_wt": 0.1013209750429822,
+            },
             'NO_ADAPT': {'learning_rate': 1e-3, 'src_cls_loss_wt': 1},
             'TARGET_ONLY': {'learning_rate': 1e-3, 'trg_cls_loss_wt': 1},
             "SASA": {

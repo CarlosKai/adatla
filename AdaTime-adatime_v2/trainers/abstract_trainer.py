@@ -118,7 +118,11 @@ class AbstractTrainer(object):
 
                 # forward pass
                 features = feature_extractor(data)
-                predictions = classifier(features)
+
+                if self.da_method!='TLA':
+                    predictions = classifier(features)
+                else:
+                    predictions = features
 
                 # compute loss
                 loss = F.cross_entropy(predictions, labels)

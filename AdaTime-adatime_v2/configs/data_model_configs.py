@@ -10,11 +10,22 @@ class HAR():
 
         # model transformer
         self.d_model = 128
-        self.n_heads = 4
+        self.n_heads = 6
         self.num_layers = 4
+        # patchTST
+        self.seq_len = 128
+        self.e_layers = 6
+        self.d_ff = 256 # 前馈网络中的隐藏层的大小，也就是第一个全连接层的输出维度
+        self.factor = 5
+        self.activation = "relu"
+        self.enc_in = 9
+        self.num_class = 6
+        self.patch_len = 8
+        self.stride = 4
 
-
-        self.scenarios = [("2", "11"), ("6", "23"), ("7", "13"), ("9", "18"), ("12", "16"), ("18", "27"), ("20", "5"), ("24", "8"), ("28", "27"), ("30", "20")]
+        self.scenarios = [("2", "11"), ("6", "23")]
+        # self.scenarios = [("2", "11"), ("6", "23"), ("7", "13"), ("9", "18"), ("12", "16"),
+        # ("18", "27"), ("20", "5"), ("24", "8"), ("28", "27"), ("30", "20")]
         self.class_names = ['walk', 'upstairs', 'downstairs', 'sit', 'stand', 'lie']
         self.sequence_len = 128
         self.shuffle = True
@@ -55,12 +66,33 @@ class HAR():
 class EEG():
     def __init__(self):
         super(EEG, self).__init__()
+
+        # model transformer
+        self.d_model = 256
+        self.n_heads = 6
+        self.num_layers = 6
+        # patchTST
+        self.seq_len = 3000
+        self.e_layers = 6
+        self.d_ff = 256  # 前馈网络中的隐藏层的大小，也就是第一个全连接层的输出维度
+        self.factor = 5
+        self.activation = "relu"
+        self.enc_in = 1
+        self.num_class = 5
+        self.patch_len = 64
+        self.stride = 32
+
+
+
+
+
         # data parameters
         self.num_classes = 5
         self.class_names = ['W', 'N1', 'N2', 'N3', 'REM']
         self.sequence_len = 3000
-        self.scenarios = [("0", "11"), ("7", "18"), ("9", "14"), ("12", "5"), ("16", "1"),
-                          ("3", "19"), ("18", "12"), ("13", "17"), ("5", "15"), ("6", "2")]
+        self.scenarios = [("0", "11"), ("7", "18"), ("9", "14"), ("12", "5")]
+        # self.scenarios = [("0", "11"), ("7", "18"), ("9", "14"), ("12", "5"), ("16", "1"),
+        #                   ("3", "19"), ("18", "12"), ("13", "17"), ("5", "15"), ("6", "2")]
         self.shuffle = True
         self.drop_last = True
         self.normalize = True
